@@ -8,6 +8,7 @@ The logging utility to be developed by you allows the caller to save a message a
 time that the message was logged. The sample log.h file (Program 2-11; p. 55) shows the data structures and prototypes of
 the functions that will be needed.
 
+
 This program is invoked with the command:
 
 ./driver [-h] [-t sec] [filename]
@@ -15,3 +16,7 @@ This program is invoked with the command:
 -h displays the help text
 -t allows the user to set an average wait time between adding messages
 And filename is the name of the file to be written to.
+
+
+GitHub:
+The repository for this project can be found at https://github.com/harleysorkin/CS-4760-Project1
