@@ -1,0 +1,17 @@
+This is your warm up project building on your knowledge from CMPSCI 2750. The goal of this project is to become familiar
+with the environment in hoare while practicing system calls. You will also demonstrate your proficiency in the use of
+perror and getopt in this submission. Additionally, you should understand the different steps of compilation and linking,
+and creating your executable. The project is a slight modification of Exercise 2.13 Message Logging (p. 55-56) in your text
+by Robbins/Robbins. The modification is that each message will also issue a classification as to whether the message is
+informational (INFO), warning (WARN), error (ERROR), or fatal (FATAL).
+The logging utility to be developed by you allows the caller to save a message at the end of a list. The logger also records the
+time that the message was logged. The sample log.h file (Program 2-11; p. 55) shows the data structures and prototypes of
+the functions that will be needed.
+
+This program is invoked with the command:
+
+./driver [-h] [-t sec] [filename]
+
+-h displays the help text
+-t allows the user to set an average wait time between adding messages
+And filename is the name of the file to be written to.
