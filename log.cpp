@@ -17,7 +17,7 @@ typedef struct list_struct {
 static log_t *headptr = NULL;
 static log_t *tailptr = NULL;
 
-int addmsg(const char type, char *msg) {
+int addmsg(const char type, const char *msg) {
     log_t *nmsg = new log_t;
 
     if (nmsg == NULL) {
@@ -25,7 +25,7 @@ int addmsg(const char type, char *msg) {
         return -1;
     }
     else {
-        nmsg->item.string = msg;
+        strcpy(nmsg->item.string, msg);
         nmsg->item.type = type;
         nmsg->next = NULL;
 

@@ -12,7 +12,7 @@ int main (int argc, char **argv) {
     while((opt = getopt(argc, argv, ":ht:")) != -1) {
         switch(opt) {
             case 't':
-                std::cout << ("Average time between writes: ") << (optarg) << std::endl;
+                std::cout << ("Average time between writes: ") << (optarg) << (" second") <<  std::endl;
                 break;
                         
             case 'h':
