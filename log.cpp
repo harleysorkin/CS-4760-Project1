@@ -4,6 +4,7 @@
 #include <getopt.h>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 #include "log.h"
 
@@ -69,7 +70,11 @@ char *getlog(void) {
     }
     else {
         while (x != NULL) {
-            strcat(output, (x->item).string);
+            time_t now = x->item.time;
+	    char* dt = ctime(&now);
+	    strcat(output, dt);
+	    strcat(output, " ");
+	    strcat(output, (x->item).string);
             strcat(output, "\n");
             x = x->next;
         }
