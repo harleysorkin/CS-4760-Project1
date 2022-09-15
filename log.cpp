@@ -25,8 +25,11 @@ int addmsg(const char type, const char *msg) {
         return -1;
     }
     else {
+	time_t now = time(0);
+
         strcpy(nmsg->item.string, msg);
-        nmsg->item.type = type;
+        nmsg->item.time = now;
+	nmsg->item.type = type;
         nmsg->next = NULL;
 
         if (headptr == NULL) {
@@ -57,7 +60,7 @@ void clearlog(void) {
 
 char *getlog(void) {
 
-    char *output = new char[MSGLEN];
+    char *output = NULL;
     log_t *x = headptr;
 
     if (output == NULL) {
@@ -65,7 +68,6 @@ char *getlog(void) {
         return NULL;
     }
     else {
-        strcpy(output, "");
         while (x != NULL) {
             strcat(output, (x->item).string);
             strcat(output, "\n");
