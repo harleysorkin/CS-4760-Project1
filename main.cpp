@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <unistd.h>
+#include <string.h>
 
 #include "log.h"
 
@@ -35,8 +36,9 @@ int main (int argc, char **argv) {
     }
  
     if (optind < argc) {
-        while (optind <argc) {
+        while (optind < argc) {
             filename = argv[optind];
+	    strcat(filename, ".log");
             optind++;
         }
     }
