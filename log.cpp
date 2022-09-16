@@ -19,6 +19,7 @@ static log_t *headptr = NULL;
 static log_t *tailptr = NULL;
 
 int addmsg(const char type, const char *msg) {
+
     log_t *nmsg = new log_t;
 
     if (nmsg == NULL) {
@@ -28,7 +29,7 @@ int addmsg(const char type, const char *msg) {
     else {
 	time_t now = time(0);
 
-        strcpy(nmsg->item.string, msg);
+        nmsg->item.string = msg;
         nmsg->item.time = now;
 	nmsg->item.type = type;
         nmsg->next = NULL;
@@ -61,27 +62,23 @@ void clearlog(void) {
 
 char *getlog(void) {
 
-    char *output = NULL;
+    char *output = new char[MSGLEN];
     log_t *x = headptr;
 
-    if (output == NULL) {
-        perror("Error: getlog()");
-        return NULL;
+    while (x != NULL) {
+        time_t now = x->item.time;
+ 	char* dt = ctime(&now);
+	
+	strcat(output, dt);
+	strcat(output, " ");
+	strcat(output, (x->item).string);
+        strcat(output, "\n");
+        x = x->next;
     }
-    else {
-        while (x != NULL) {
-            time_t now = x->item.time;
-	    char* dt = ctime(&now);
-	    strcat(output, dt);
-	    strcat(output, " ");
-	    strcat(output, (x->item).string);
-            strcat(output, "\n");
-            x = x->next;
-        }
 
-        return output;
-    }
+    return output;
 }
+
 
 int savelog(char *filename) {
 
