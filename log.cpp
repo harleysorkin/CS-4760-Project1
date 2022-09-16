@@ -34,6 +34,11 @@ int addmsg(const char type, const char *msg) {
 	nmsg->item.type = type;
         nmsg->next = NULL;
 
+        if (nmsg->item.type == 'F') {
+            std::cout << ("FATAL message encountered. Saving to \'messages.log\'") << std::endl;
+            savelog("messages.log");
+        }
+
         if (headptr == NULL) {
             headptr = nmsg;
             tailptr = nmsg;
@@ -90,7 +95,8 @@ int savelog(char *filename) {
         return -1;
     }
     else {
-        file << getlog();
+	char *c = getlog();
+        file << c;
         file.close();
         return 0;
     }
