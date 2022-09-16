@@ -1,3 +1,9 @@
+/*Harley Sorkin
+ *CS 4760 Project 1
+ *9/15/2022
+ */
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,6 +24,7 @@ typedef struct list_struct {
 static log_t *headptr = NULL;
 static log_t *tailptr = NULL;
 
+// Add a new message to the list_struct
 int addmsg(const char type, const char *msg) {
 
     log_t *nmsg = new log_t;
@@ -52,6 +59,7 @@ int addmsg(const char type, const char *msg) {
     }
 }
 
+// Clears list_struct
 void clearlog(void) {
     
     log_t *x;
@@ -65,6 +73,7 @@ void clearlog(void) {
     headptr = NULL;
 }
 
+//Prints list_struct to the console
 char *getlog(void) {
 
     char *output = new char[MSGLEN];
@@ -84,7 +93,7 @@ char *getlog(void) {
     return output;
 }
 
-
+//Writes list_struct to chosen file
 int savelog(char *filename) {
 
     std::ofstream file;

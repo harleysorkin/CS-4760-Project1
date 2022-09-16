@@ -1,3 +1,9 @@
+/*Harley Sorkin
+ *CS 4760 Project 1
+ *9/15/2022
+ */
+
+
 #include <stdlib.h>
 #include <getopt.h>
 #include <stdio.h>
@@ -10,10 +16,11 @@
 int main (int argc, char **argv) {
 
     int opt, s;
-    int sec = 2;
+    int sec = 2; //Default time to wait
     char* filename;
-    srand(time(NULL));
+    srand(time(NULL)); //Sets seed for random numbers
 
+    //Use getopt() to parse command line arguments
     while((opt = getopt(argc, argv, ":ht:")) != -1) {
         switch(opt) {
             case 't':
@@ -35,6 +42,7 @@ int main (int argc, char **argv) {
         }
     }
  
+    //Get optional filename
     if (optind < argc) {
         while (optind < argc) {
             filename = argv[optind];
@@ -47,6 +55,9 @@ int main (int argc, char **argv) {
     }
 
     std::cout << ("Chosen output filename: ") << filename << std::endl;
+
+
+    //Testing
 
     addmsg('I', "INFO: This is a flagged as informational");
     s = (rand() % (2 * sec + 1) + 1);
@@ -61,12 +72,14 @@ int main (int argc, char **argv) {
     sleep(s);
     
     addmsg('F', "FATAL: This is a flagged as fatal");
-    s = (rand() % (2 * sec + 1) + 1);
-    sleep(s); 
     
+    //Print log to command line
     char* a = getlog();
     std::cout << a;
-    //clearlog();
+   
+    addmsg('I', "INFO: This message won't be saved");
+    clearlog();
+    
     savelog(filename);
     std::cout << ("Saved log to ") << filename << std::endl;
 

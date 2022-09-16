@@ -1,3 +1,9 @@
+/*Harley Sorkin
+ *CS 4760 Project 1
+ *9/15/2022
+ */
+
+
 #include <time.h>
 
 typedef struct data_struct {
